@@ -4,8 +4,8 @@
 	<a href="https://badge.fury.io/py/jmu-openconnect"><img alt="PyPI" src="https://img.shields.io/pypi/v/jmu-openconnect" /></a>
 	<a href="https://pepy.tech/project/jmu-openconnect"><img alt="Downloads" src="https://pepy.tech/badge/jmu-openconnect" /></a>
 	<a href="https://github.com/TabulateJarl8/jmu-openconnect/blob/master/LICENSE"><img alt="License" src="https://img.shields.io/pypi/l/jmu-openconnect.svg" /></a>
-	<a href="https://github.com/TabulateJarl8/vapor/graphs/commit-activity"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
-	<a href="https://github.com/TabulateJarl8/vapor/issues/"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/TabulateJarl8/vapor.svg" /></a>
+	<a href="https://github.com/TabulateJarl8/jmu-openconnect/graphs/commit-activity"><img alt="Maintenance" src="https://img.shields.io/badge/Maintained%3F-yes-green.svg" /></a>
+	<a href="https://github.com/TabulateJarl8/jmu-openconnect/issues/"><img alt="GitHub Issues" src="https://img.shields.io/github/issues/TabulateJarl8/jmu-openconnect.svg" /></a>
 	<a href="https://github.com/TabulateJarl8"><img alt="GitHub followers" src="https://img.shields.io/github/followers/TabulateJarl8?style=social" /></a>
 	<br>
 	<a href="https://ko-fi.com/L4L3L7IO2"><img alt="Kofi Badge" src="https://ko-fi.com/img/githubbutton_sm.svg" /></a>
