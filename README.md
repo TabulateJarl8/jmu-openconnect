@@ -37,7 +37,7 @@ You can also specify a username and password to be automatically typed in, howev
 $ jmu-openconnect -u <EID> -p <PASSWORD>
 ```
 
-You can alternatively specify the `--prompt-password` option instead of using `-p`, which will prompt the user for a password without echoing, much like sudo. This is more secure as your password won't be saved in your command line history.
+You can alternatively specify the `--prompt-password` (or `-P`) option instead of using `-p`, which will prompt the user for a password without echoing, much like sudo. This is more secure as your password won't be saved in your command line history.
 
 JMU OpenConnect defaults to using firefox, but you can easily change which browser you're using by specifying `--browser`, which accepts `firefox`, `chrome`, or `edge`.
 

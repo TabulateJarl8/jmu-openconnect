@@ -341,6 +341,7 @@ def main():
 	)
 
 	parser.add_argument(
+		'-P',
 		'--prompt-password',
 		action='store_true',
 		help='Prompt for the password without echoing as to not show it in your command history',
@@ -360,6 +361,7 @@ def main():
 	)
 
 	parser.add_argument(
+		'-A',
 		'--only-authenticate',
 		action='store_true',
 		help="Only authenticate and don't start openconnect. Prints the DSID cookie to STDOUT",
