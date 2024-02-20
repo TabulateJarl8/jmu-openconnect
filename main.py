@@ -379,6 +379,13 @@ def main():
 		'edge': Browser.EDGE,
 	}[args.browser]
 
+	if not args.only_authenticate:
+		# check for openconnect before making the user authenticate
+		logging.debug('Checking if openconnect is installed')
+		if shutil.which('openconnect') is None:
+			print('openconnect was not found on your PATH. Please ensure that openconnect is installed.')
+			sys.exit(1)
+
 	try:
 		dsid_cookie = get_dsid_cookie(
 			username=args.username,
