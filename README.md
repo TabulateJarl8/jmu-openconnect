@@ -17,12 +17,10 @@ This is a wrapper script around openconnect to help with authentication for the 
 This script can easily be installed with pip or [pipx](https://pipx.pypa.io/stable/) with the following commands:
 
 ```console
-$ pip3 install jmu-openconnect
-$ # OR
 $ pipx install jmu-openconnect
+$ # OR
+$ pip3 install jmu-openconnect
 ```
-
-This script can also be used as a standalone script by downloading the `main.py` file and ensuring that selenium is installed with `pip3 install selenium`, or by cloning the repository and running `poetry install`.
 
 ## Usage
 Once the script is installed, you can run the following command in your terminal:
@@ -52,12 +50,9 @@ To see all of the available options, run `jmu-openconnect --help`.
 ## Dependencies
 This script just requires openconnect and [selenium](https://pypi.org/project/selenium/). If you are having problems, check the [Selenium Python Documentation](https://selenium-python.readthedocs.io/installation.html#drivers0).
 
-## Why is this all in one script?
-I heavily considered splitting this up into multiple files, but I really wanted to preserve the ability to just have this script up on a website somewhere where people could just download this script, install selenium, and run it with Python. This may change in the future but this is what I've gone with for now.
-
 ## DSID Cookie was not found
 If you get the error that the DSID cookie was not found, then you may be logged on in multiple places at once. Navigate to https://vpn.jmu.edu and after signing in, you should see a screen like this:
 
 ![Maximum number of open user sessions screenshot](img/multi_sign_in.png)
 
-If this is the case, just select the box to remove that sign in and retry the script after verifying that you are signed out of all browser sessions. If this is not the problem, try running the script with `jmu-openconnect --debug-auth-error` to see the error for a longer period of time.
+If this is the case, just select the box to remove that sign in and press "Close Selected Sessions and Log in". After this, you will need to press the log out button in the upper right corner of the VPN website, and then you can retry the script. If this is not the problem, try running the script with `jmu-openconnect --debug-auth-error` to see the error for a longer period of time.
