@@ -1,4 +1,7 @@
 # JMU OpenConnect
+<p align="center">
+	<img src="img/logo.svg" />
+</p>
 
 <p align="center">
 	<a href="https://badge.fury.io/py/jmu-openconnect"><img alt="PyPI" src="https://img.shields.io/pypi/v/jmu-openconnect" /></a>
