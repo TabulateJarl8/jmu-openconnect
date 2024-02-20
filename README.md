@@ -41,6 +41,8 @@ You can alternatively specify the `--prompt-password` option instead of using `-
 
 JMU OpenConnect defaults to using firefox, but you can easily change which browser you're using by specifying `--browser`, which accepts `firefox`, `chrome`, or `edge`.
 
+The first time that you launch JMU OpenConnect, it may take a little longer than normal, as selenium has to download and cache your webdriver.
+
 ```console
 $ jmu-openconnect --browser chrome
 ```
@@ -48,7 +50,7 @@ $ jmu-openconnect --browser chrome
 To see all of the available options, run `jmu-openconnect --help`.
 
 ## Dependencies
-This script just requires openconnect, [selenium](https://pypi.org/project/selenium/), and a webdriver. On my machine, it seems that the webdrivers are automatically installed if you have Firefox or Chromium installed, so you probably don't need to worry about this. If you are having problems, check the [Selenium Python Documentation](https://selenium-python.readthedocs.io/installation.html#drivers0).
+This script just requires openconnect and [selenium](https://pypi.org/project/selenium/). If you are having problems, check the [Selenium Python Documentation](https://selenium-python.readthedocs.io/installation.html#drivers0).
 
 ## Why is this all in one script?
 I heavily considered splitting this up into multiple files, but I really wanted to preserve the ability to just have this script up on a website somewhere where people could just download this script, install selenium, and run it with Python. This may change in the future but this is what I've gone with for now.

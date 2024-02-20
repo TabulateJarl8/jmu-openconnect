@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jmu-openconnect"
-version = "0.1.0"
+version = "0.2.0"
 description = "Wrapper script around openconnect forJMU VPN authentication on Linux."
 authors = ["TabulateJarl8 <tabulatejarl8@gmail.com>"]
 license = "MIT"
