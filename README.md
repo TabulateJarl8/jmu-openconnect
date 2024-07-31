@@ -1,6 +1,6 @@
 # JMU OpenConnect
 <p align="center">
-	<img src="img/logo.svg" />
+	<img src="img/logo_static.svg" />
 </p>
 
 <p align="center">
