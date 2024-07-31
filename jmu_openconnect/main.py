@@ -16,6 +16,29 @@ from jmu_openconnect.exceptions import (
 )
 
 
+class CustomLoggingFormatter(logging.Formatter):
+	grey = '\x1b[30;1m'
+	yellow = '\x1b[33;20m'
+	red = '\x1b[31;20m'
+	bold_red = '\x1b[31;1m'
+	blue = '\u001b[34;1m'
+	reset = '\x1b[0m'
+	fmt = '%(asctime)s | %(levelname)s | %(module)s:%(module)s:%(lineno)d - %(message)s'
+
+	FORMATS = {
+		logging.DEBUG: grey + fmt + reset,
+		logging.INFO: blue + fmt + reset,
+		logging.WARNING: yellow + fmt + reset,
+		logging.ERROR: red + fmt + reset,
+		logging.CRITICAL: bold_red + fmt + reset,
+	}
+
+	def format(self, record):
+		log_fmt = self.FORMATS.get(record.levelno)
+		formatter = logging.Formatter(log_fmt)
+		return formatter.format(record)
+
+
 def start_openconnect(dsid_cookie: str) -> int:
 	"""Start openconnect with the specified DSID cookie.
 
@@ -59,9 +82,13 @@ def start_openconnect(dsid_cookie: str) -> int:
 
 
 def main():
+	# set up custom logging formatting
+	handler = logging.StreamHandler()
+	handler.setFormatter(CustomLoggingFormatter())
 	logging.basicConfig(
-		format='%(asctime)s | %(levelname)s | %(module)s:%(module)s:%(lineno)d - %(message)s',
 		level=os.environ.get('LOGLEVEL', 'INFO').upper(),
+		format='%(asctime)s | %(levelname)s | %(module)s:%(module)s:%(lineno)d - %(message)s',
+		handlers=[handler],
 	)
 
 	args = parse_args()
