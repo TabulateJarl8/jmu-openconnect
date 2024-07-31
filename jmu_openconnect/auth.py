@@ -6,6 +6,7 @@ such as the Browser enum as well as the function for fetching the DSID cookie.
 
 import json
 import logging
+import sys
 import time
 from enum import Enum
 from typing import Optional
@@ -94,8 +95,6 @@ def fetch_latest_browser_version(browser: Browser) -> str:
 				return ''
 		else:
 			return ''
-	else:
-		return ''
 
 
 def get_dsid_cookie(
@@ -140,6 +139,14 @@ def get_dsid_cookie(
 	try:
 		driver = browser.value['driver'](options=options)
 	except WebDriverException as e:
+		# catch invalid host header error
+		if e.msg and 'Invalid Host header' in e.msg:
+			logging.error(e)
+			logging.info(
+				'If running Linux, try adding `127.0.0.1 localhost` to your /etc/hosts'
+			)
+			sys.exit(1)
+
 		# the browser version probably wasn't detected correctly, try to fetch it from the web
 		logging.warning('Browser version incorrectly detected')
 		logging.debug(e, exc_info=True)

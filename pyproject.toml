@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "jmu-openconnect"
-version = "0.3.0"
-description = "Wrapper script around openconnect forJMU VPN authentication on Linux."
+version = "0.4.0"
+description = "Wrapper script around openconnect for JMU VPN authentication on Linux."
 authors = ["TabulateJarl8 <tabulatejarl8@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -25,10 +25,10 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-selenium = "^4.17.2"
+selenium = "^4.23.1"
 
 [tool.poetry.group.dev.dependencies]
-ruff = "^0.2.2"
+ruff = "^0.5.5"
 
 [tool.poetry.scripts]
 jmu-openconnect = "jmu_openconnect.main:main"
