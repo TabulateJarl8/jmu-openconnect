@@ -1,9 +1,23 @@
 """Module for parsing command line arguments."""
 
 import argparse
+from dataclasses import dataclass
+from typing import Literal, cast
 
 
-def parse_args() -> argparse.Namespace:
+@dataclass
+class ProgramArgs:
+	browser: Literal['firefox', 'chrome', 'edge']
+	browser_binary: str
+	username: str
+	password: str
+	prompt_password: bool
+	timeout: int
+	debug_auth_error: bool
+	only_authenticate: bool
+
+
+def parse_args() -> ProgramArgs:
 	"""Parse command line arguments.
 
 	Returns:
@@ -69,4 +83,4 @@ def parse_args() -> argparse.Namespace:
 		help="Only authenticate and don't start openconnect. Prints the DSID cookie to STDOUT",
 	)
 
-	return parser.parse_args()
+	return cast(ProgramArgs, cast(object, parser.parse_args()))

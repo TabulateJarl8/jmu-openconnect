@@ -20,7 +20,7 @@ classifiers = [
 	"Programming Language :: Python :: 3.10",
 	"Programming Language :: Python :: 3.11",
 	"Programming Language :: Python :: 3.12",
-	"Typing :: Typed"
+	"Typing :: Typed",
 ]
 
 [tool.poetry.dependencies]
@@ -37,49 +37,52 @@ jmu-openconnect = "jmu_openconnect.main:main"
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.pyright]
+reportUnusedCallResult = false
+
 [tool.ruff.lint]
 preview = true
 extend-select = [
-		# pycodestyle
-		"E",
-		"W293",
-		"W292",
-		"W605",
-		# Pyflakes
-		"F",
-		# pyupgrade
-		"UP",
-		# flake8-bugbear
-		"B",
-		# flake8-simplify
-		"SIM",
-		# isort
-		"I",
-		# pep8-naming
-		"N",
-		# flake8-bandit
-		"S",
-		# flake8-boolean-trap
-		"FBT",
-		# flake8-comprehensions
-		"C4",
-		# flake8-pie
-		"PIE",
-		# quote rules
-		"Q001",
-		"Q002",
-		# flake8-raise
-		"RSE",
-		# flake8-return
-		"RET",
-		# flake8-unused-arguments
-		"ARG",
-		# flake8-use-pathlib
-		"PTH",
-		# eradicate
-		"ERA",
-		# perflint
-		"PERF"
+	# pycodestyle
+	"E",
+	"W293",
+	"W292",
+	"W605",
+	# Pyflakes
+	"F",
+	# pyupgrade
+	"UP",
+	# flake8-bugbear
+	"B",
+	# flake8-simplify
+	"SIM",
+	# isort
+	"I",
+	# pep8-naming
+	"N",
+	# flake8-bandit
+	"S",
+	# flake8-boolean-trap
+	"FBT",
+	# flake8-comprehensions
+	"C4",
+	# flake8-pie
+	"PIE",
+	# quote rules
+	"Q001",
+	"Q002",
+	# flake8-raise
+	"RSE",
+	# flake8-return
+	"RET",
+	# flake8-unused-arguments
+	"ARG",
+	# flake8-use-pathlib
+	"PTH",
+	# eradicate
+	"ERA",
+	# perflint
+	"PERF",
 ]
 
 ignore = [
@@ -92,7 +95,7 @@ ignore = [
 	"S101",
 	"ERA001",
 	"S603",
-	"S404"
+	"S404",
 ]
 
 [tool.ruff.format]

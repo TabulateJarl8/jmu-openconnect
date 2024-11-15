@@ -1,14 +1,16 @@
 """This module contains custom exceptions that are used throughout the program."""
 
+from typing import Any
+
 
 class MissingDSIDError(Exception):
 	"""Raised if DSID cooke was not found."""
 
 	def __init__(
 		self,
-		msg='DSID Cookie was not found',
-		*args,
-		**kwargs,
+		msg: str = 'DSID Cookie was not found',
+		*args: tuple[Any, ...],
+		**kwargs: Any,  # pyright: ignore[reportAny]
 	):
 		super().__init__(msg, *args, **kwargs)
 
@@ -18,9 +20,9 @@ class TimedOutError(Exception):
 
 	def __init__(
 		self,
-		msg='webdriver timed out while waiting for authentication',
-		*args,
-		**kwargs,
+		msg: str = 'webdriver timed out while waiting for authentication',
+		*args: tuple[Any, ...],
+		**kwargs: Any,  # pyright: ignore[reportAny]
 	):
 		super().__init__(msg, *args, **kwargs)
 
@@ -30,8 +32,8 @@ class MissingOpenConnectError(Exception):
 
 	def __init__(
 		self,
-		msg="openconnect binary could not be found. make sure it's installed and on your PATH",
-		*args,
-		**kwargs,
+		msg: str = "openconnect binary could not be found. make sure it's installed and on your PATH",
+		*args: tuple[Any, ...],
+		**kwargs: Any,  # pyright: ignore[reportAny]
 	):
 		super().__init__(msg, *args, **kwargs)

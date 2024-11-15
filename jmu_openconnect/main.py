@@ -6,6 +6,7 @@ import os
 import shutil
 import subprocess
 import sys
+from typing import override
 
 from jmu_openconnect.argument_parser import parse_args
 from jmu_openconnect.auth import Browser, get_dsid_cookie
@@ -17,15 +18,17 @@ from jmu_openconnect.exceptions import (
 
 
 class CustomLoggingFormatter(logging.Formatter):
-	grey = '\x1b[30;1m'
-	yellow = '\x1b[33;20m'
-	red = '\x1b[31;20m'
-	bold_red = '\x1b[31;1m'
-	blue = '\u001b[34;1m'
-	reset = '\x1b[0m'
-	fmt = '%(asctime)s | %(levelname)s | %(module)s:%(module)s:%(lineno)d - %(message)s'
+	grey: str = '\x1b[30;1m'
+	yellow: str = '\x1b[33;20m'
+	red: str = '\x1b[31;20m'
+	bold_red: str = '\x1b[31;1m'
+	blue: str = '\u001b[34;1m'
+	reset: str = '\x1b[0m'
+	fmt: str = (
+		'%(asctime)s | %(levelname)s | %(module)s:%(module)s:%(lineno)d - %(message)s'
+	)
 
-	FORMATS = {
+	FORMATS: dict[int, str] = {
 		logging.DEBUG: grey + fmt + reset,
 		logging.INFO: blue + fmt + reset,
 		logging.WARNING: yellow + fmt + reset,
@@ -33,10 +36,23 @@ class CustomLoggingFormatter(logging.Formatter):
 		logging.CRITICAL: bold_red + fmt + reset,
 	}
 
-	def format(self, record):
+	@override
+	def format(self, record: logging.LogRecord) -> str:
 		log_fmt = self.FORMATS.get(record.levelno)
 		formatter = logging.Formatter(log_fmt)
 		return formatter.format(record)
+
+
+def find_root_program() -> list[str]:
+	"""Check whether sudo or doas is installed on the system.
+
+	Returns:
+		list[str]: sudo or doas, if installed. Empty list if not.
+	"""
+	for prog in ('doas', 'sudo'):
+		if shutil.which(prog):
+			return [prog]
+	return []
 
 
 def start_openconnect(dsid_cookie: str) -> int:
@@ -58,7 +74,7 @@ def start_openconnect(dsid_cookie: str) -> int:
 	if shutil.which('openconnect') is None:
 		raise MissingOpenConnectError
 
-	as_root = next(([prog] for prog in ('doas', 'sudo') if shutil.which(prog)), [])
+	as_root = find_root_program()
 	logging.debug(f'Root program identified: {as_root}')
 
 	# check if the script is running as root or if sudo/doas were not found
