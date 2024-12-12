@@ -6,7 +6,8 @@ import os
 import shutil
 import subprocess
 import sys
-from typing import override
+
+from typing_extensions import override
 
 from jmu_openconnect.argument_parser import parse_args
 from jmu_openconnect.auth import Browser, get_dsid_cookie
@@ -105,6 +106,10 @@ def main():
 		level=os.environ.get('LOGLEVEL', 'INFO').upper(),
 		format='%(asctime)s | %(levelname)s | %(module)s:%(module)s:%(lineno)d - %(message)s',
 		handlers=[handler],
+	)
+
+	logging.warning(
+		'This project is based on Ivanti Pulse Secure, which JMU no longer uses as of January 6th, 2025. Now that JMU has switched to GlobalProtect, you can switch to using https://github.com/yuezk/GlobalProtect-openconnect if needed.'
 	)
 
 	args = parse_args()
